@@ -15,7 +15,8 @@
         <label for="description">Description:</label>
         <textarea name="description" rows="5"></textarea>
         <br>
-        <button type="submit">Salvar</button>
+        <a href="{{route('categories.index')}}">Back</a>
+        <button type="submit">Save</button>
     </form>
 </body>
 </html>

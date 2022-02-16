@@ -7,8 +7,34 @@
     <title>{{$title}}</title>
 </head>
 <body>
-    @foreach ($categories as $category)
-        {{$category}}<br>
-    @endforeach
+    <a href="{{route('categories.create')}}">New</a>
+    <br>
+    <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+            @foreach ($categories as $index => $category)
+          <tr>
+            <th>{{++$index}}</th>
+            <td>{{$category->name}}</td>
+            <td>{{$category->description}}</td>
+            <td>
+                <a href="{{route('categories.edit',['category' => $category->id])}}">Edit</a>
+                <form action="{{route('categories.delete',['category' => $category->id])}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
 </body>
 </html>
