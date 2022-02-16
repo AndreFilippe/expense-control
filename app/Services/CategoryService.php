@@ -12,7 +12,7 @@ class CategoryService
 
     public function getAll()
     {
-        return $this->model->all();
+        return $this->model->orderBy('name', 'asc')->get();
     }
 
     public function create(array $data): Category
