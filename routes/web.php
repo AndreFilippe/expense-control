@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
-Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
-Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::put('categories/{category}/edit', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('categories/{category}/delete', [CategoryController::class, 'delete'])->name('categories.delete');
+Route::prefix('categories')->controller(CategoryController::class)->name('categories.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('create', 'create')->name('create');
+    Route::post('/', 'store')->name('store');
+    Route::get('{category}/edit', 'edit')->name('edit');
+    Route::put('{category}/edit', 'update')->name('update');
+    Route::delete('{category}/delete', 'delete')->name('delete');
+});
+
+Route::prefix('items')->controller(ItemController::class)->name('items.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('create', 'create')->name('create');
+    Route::post('/', 'store')->name('store');
+    Route::get('{item}/edit', 'edit')->name('edit');
+    Route::put('{item}/edit', 'update')->name('update');
+    Route::delete('{item}/delete', 'delete')->name('delete');
+});
