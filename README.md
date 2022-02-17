@@ -3,7 +3,7 @@
 ## Project to control expenses and assist in the management of a house
 
 <h4 align="center"> 
-	🚧  Expense Control 🚀 Em construção...  🚧
+	🚧  Expense Control 🚀 Under construction...  🚧
 </h4>
 
 ### Features
